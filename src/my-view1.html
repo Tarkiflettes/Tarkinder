@@ -10,41 +10,51 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-view1">
   <template>
     <style include="shared-styles">
-      :host {
-        display: block;
+    :host {
+      display: block;
+      text-align: center;
+    }
+    paper-fab {
+      display: inline-block;
+      text-align: center;
+      background-color: #ff0000;
+    }
+    paper-card {
+      background-color: #282a36;
+      color: #f8f8f2;
+      width: 60%;
+      text-align: left;
+    }
 
-        padding: 10px;
-      }
-
-      paper-fab {
-        display: inline-block;
-        text-align: center;
-      }
+    .card-actions {
+      text-align: center;
+    }
     </style>
 
-    <div class="card">
-      <h1>Consigne</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-      <div style="height:1px;background-color:grey"></div>
-      <paper-fab icon="favorite"></paper-fab>
-      <paper-fab icon="clear"></paper-fab>
-      <paper-fab icon="check"></paper-fab>
-      <paper-fab icon="favorite"></paper-fab>
-    </div>
+    <paper-card>
+      <div class="card-content">Some content</div>
+      <div class="card-content">code</div>
+      <div class="card-actions">
+        <paper-fab icon="remove"></paper-fab>
+        <paper-fab icon="clear"></paper-fab>
+        <paper-fab icon="check"></paper-fab>
+        <paper-fab icon="favorite"></paper-fab>
+      </div>
+    </paper-card>
   </template>
 
   <script>
-    class MyView1 extends Polymer.Element {
-      static get is() { return 'my-view1'; }
-    }
+  class MyView1 extends Polymer.Element {
+    static get is() { return 'my-view1'; }
+  }
 
-    window.customElements.define(MyView1.is, MyView1);
+  window.customElements.define(MyView1.is, MyView1);
   </script>
 </dom-module>
