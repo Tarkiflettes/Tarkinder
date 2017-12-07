@@ -1,0 +1,85 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-auth">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+
+      .cafe-header {
+        float: right;
+      }
+    </style>
+
+    <div class="card">
+      <iron-collapse id="signinButton" opened>
+        <paper-button on-click="toggleSignIn" raised>SE CONNECTER</paper-button>
+      </iron-collapse>
+      <iron-collapse id="signin">
+        <paper-card elevation="2" animated-shadow="true">
+          Se connecter
+            <div class="cafe-header">
+              <paper-icon-button on-click='toggleSignIn' icon='clear'></paper-icon-button>
+            </div>
+            <div class="card-content">
+                <paper-input name="email" value={{mail}} label="Email" required></paper-input>
+                <paper-input type="password" value="{{pass}}" name="password" label="Mot de passe" required></paper-input>
+            </div>
+            <div class="card-actions">
+                <paper-button on-click='login'>SE CONNECTER</paper-button>
+                <paper-button>Mot de passe oublié</paper-button>
+            </div>
+        </paper-card>
+      </iron-collapse>
+      <iron-collapse id="signupButton" opened>
+        <paper-button on-click="toggleSignUp" raised>S'INSCRIRE</paper-button>
+      </iron-collapse>
+      <iron-collapse id="signup">
+        <paper-card heading="Nouvel utilisateur" image="" elevation="2" animated-shadow="true">
+          Nouvel utilisateur
+            <div class="cafe-header">
+              <paper-icon-button on-click='toggleSignUp' icon='clear'></paper-icon-button>
+            </div>
+            <div class="card-content">
+                <paper-input name="pseudo" value={{pseudo}} label="Pseudo" required></paper-input>
+                <paper-input name="email" value={{mail}} label="Email" required></paper-input>
+                <paper-input type="password" value="{{pass}}" name="password" label="Mot de passe" required></paper-input>
+            </div>
+            <div class="card-actions">
+                <paper-button on-click='signup'>S'INSCRIRE</paper-button>
+            </div>
+        </paper-card>
+      </iron-collapse>
+    </div>
+  </template>
+
+  <script>
+    class MyAuth extends Polymer.Element {
+      static get is() { return 'my-auth'; }
+
+      toggleSignIn() {
+        this.$.signin.toggle();
+        this.$.signinButton.toggle();
+        this.$.signupButton.toggle();
+      }
+
+      toggleSignUp() {
+        this.$.signup.toggle();
+        this.$.signinButton.toggle();
+        this.$.signupButton.toggle();
+      }
+    }    
+
+    window.customElements.define(MyAuth.is, MyAuth);
+  </script>
+</dom-module>
