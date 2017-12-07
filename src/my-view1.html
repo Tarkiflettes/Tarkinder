@@ -29,19 +29,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     paper-card {
       background-color: #282a36;
       color: #f8f8f2;
-      width: 60%;
+      width: 70%;
       text-align: left;
     }
-
+    .top-border {
+      border-top: 1px solid;
+      border-color: grey;
+    }
     .card-actions {
       text-align: center;
     }
     </style>
 
     <paper-card>
-      <div class="card-content">Some content</div>
-      <div class="card-content">code</div>
-      <div class="card-actions">
+      <div class="card-content">
+        <h2>title</h2>
+        <p>description</p>
+      </div>
+      <div class="card-content top-border">code</div>
+      <div class="card-actions top-border">
         <paper-fab icon="remove"></paper-fab>
         <paper-fab icon="clear"></paper-fab>
         <paper-fab icon="check"></paper-fab>
