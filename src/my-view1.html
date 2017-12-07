@@ -11,6 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-view1">
@@ -18,16 +19,65 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="shared-styles">
       :host {
         display: block;
-
         padding: 10px;
+        text-align: center;
+      }
+
+      paper-card {
+        margin:10px;
+        width:50%;
+        text-align: left;
+        background: #272822;
+        color: #FFFFFF;
+        --paper-card-header-color: #FFFFFF;
       }
 
       paper-fab {
         display: inline-block;
         text-align: center;
       }
+
+      .card-consigne {
+        @apply --paper-font-headline;
+      }
+
+      .tab {
+        margin-left: 20px;
+      }
+
+      .card-actions {
+        text-align: center;
+        padding: 20px;
+      }
+
+      .card-content {
+        margin-left: 50px;
+      }
+
+      paper-fab + paper-fab {
+        margin-left: 10px;
+      }
+
     </style>
 
+    <paper-card heading="Consigne">
+      <div class="card-content">
+        <div class="card-consigne">
+          <p>public class HelloWorld {</p>
+            <p class="tab">public static void main(String[] args) {</p>
+            <p class="tab">// Prints "Hello, World" to the terminal window.</p>
+            <p class="tab">System.out.println("Hello, World");</p>
+            <p class="tab">}</p>
+          <p>}</p>
+        </div>
+      </div>
+      <div class="card-actions">
+        <paper-fab icon="favorite"></paper-fab>
+        <paper-fab icon="clear"></paper-fab>
+        <paper-fab icon="check"></paper-fab>
+        <paper-fab icon="favorite"></paper-fab>
+      </div>
+    </paper-card>
     <div class="card">
       <h1>Consigne</h1>
       <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
