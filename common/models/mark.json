@@ -1,0 +1,25 @@
+{
+  "name": "mark",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "mark": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {
+    "codesheet": {
+      "type": "belongsTo",
+      "model": "codesheet",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

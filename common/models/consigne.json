@@ -1,0 +1,28 @@
+{
+  "name": "consigne",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "codesheet": {
+      "type": "hasMany",
+      "model": "codesheet",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
