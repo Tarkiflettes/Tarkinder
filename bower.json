@@ -18,12 +18,13 @@
     "paper-fab": "PolymerElements/paper-fab#^2.0.0",
     "iron-icon": "^2.0.1",
     "iron-icons": "^2.0.1",
-    "polymer-code-mirror": "^0.2.0"
+    "polymer-code-mirror": "^0.2.0",
     "paper-button": "PolymerElements/paper-button#^2.0.0",
     "iron-collapse": "^2.0.0",
     "paper-card": "PolymerElements/paper-card#^2.0.0",
     "paper-input": "PolymerElements/paper-input#^2.0.5",
-    "konami-code": "abdonrd/konami-code#^0.1.1"
+    "konami-code": "abdonrd/konami-code#^0.1.1",
+    "game-snakes": "^0.3.1"
   },
   "resolutions": {
     "polymer": "^2.0.0"
