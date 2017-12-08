@@ -42,12 +42,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <paper-card>
+<<<<<<< HEAD
       <div class="card-content">
         <h2>title</h2>
         <p>description</p>
       </div>
       <div class="card-content top-border">code</div>
       <div class="card-actions top-border">
+=======
+      <iron-ajax auto url="" handle-as="json" on-response="handleResponse"></iron-ajax>
+      <div class="card-content">Some content</div>
+      <div class="card-content">code</div>
+      <div class="card-actions">
+>>>>>>> origin/master
         <paper-fab icon="remove"></paper-fab>
         <paper-fab icon="clear"></paper-fab>
         <paper-fab icon="check"></paper-fab>
@@ -59,6 +66,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script>
   class MyView1 extends Polymer.Element {
     static get is() { return 'my-view1'; }
+
+    handleResponse(e) {
+      console.log(e.detail.response);
+    }
   }
 
   window.customElements.define(MyView1.is, MyView1);
