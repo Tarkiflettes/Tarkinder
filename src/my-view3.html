@@ -129,14 +129,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   }
   </style>
 
-
+  <iron-ajax id="AjaxPostConsigne"
+        url="http://54.37.20.216:3000/api/consignes"
+        method="POST"
+        content-type="application/json"
+        handle-as="json"
+        on-response="_handleAjaxPostResponseConsigne"
+        on-error="_handleAjaxPostErrorConsigne">
+    </iron-ajax>
   <paper-card heading="Créer une nouvelle consigne">
     <iron-ajax auto url="" handle-as="json" on-response="handleResponse"></iron-ajax>
     <div class="card-content">
-      <textarea class="code-input"></textarea>
+      <textarea id="textArea" value="{{taValue::input}}" class="code-input"></textarea>
     </div>
     <div class="card-actions">
-      <paper-button raised class="submit">Créer</paper-button>
+      <paper-button raised class="submit" on-click="submit">Créer</paper-button>
     </div>
   </paper-card>
 </template>
@@ -144,6 +151,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script>
     class MyView3 extends Polymer.Element {
       static get is() { return 'my-view3'; }
+
+      submit() {
+        console.log(this.tokken)
+        var obj = {};
+        obj.Authorization = this.tokken;
+        this.$.AjaxPostConsigne.headers = obj
+        this.$.AjaxPostConsigne.body = { "title": this.taValue, "description": "consigne pour code"}
+        this.$.AjaxPostConsigne.generateRequest();
+      }
+
+      _handleAjaxPostErrorConsigne(e) {
+        console.log(e.detail.response);
+      }
+
+      _handleAjaxPostResponseConsigne(e) {
+        console.log(e.detail.response);
+      }
     }
 
     window.customElements.define(MyView3.is, MyView3);

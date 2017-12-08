@@ -12,6 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/paper-input/paper-textarea.html">
@@ -128,7 +129,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   }
   </style>
 
-
+  <iron-ajax id="AjaxPostCode"
+        url="http://54.37.20.216:3000/api/codesheets"
+        method="POST"
+        content-type="application/json"
+        handle-as="json"
+        on-response="_handleAjaxPostResponseCode"
+        on-error="_handleAjaxPostErrorCode">
+    </iron-ajax>
   <paper-card heading="Soumettre du code">
     <iron-ajax auto url="" handle-as="json" on-response="handleResponse"></iron-ajax>
     <div class="card-content">
@@ -140,10 +148,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </div>
     <div class="card-content">
       <h1>Code</h1>
-      <textarea class="code-input"></textarea>
+      <textarea id="textArea" value="{{taValue::input}}" class="code-input"></textarea>
     </div>
     <div class="card-actions">
-      <paper-button raised class="submit">Soumettre</paper-button>
+      <paper-button raised class="submit" on-click="submit">Soumettre</paper-button>
     </div>
   </paper-card>
 </template>
@@ -151,6 +159,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script>
 class MyView2 extends Polymer.Element {
   static get is() { return 'my-view2'; }
+
+  submit() {
+    //var text = textArea.value;
+    console.log(this.tokken)
+    var obj = {};
+    obj.Authorization = this.tokken;
+    this.$.AjaxPostCode.headers = obj
+    this.$.AjaxPostCode.body = { "code": this.taValue, "consigneId": "76", "langageId": "45" }
+    this.$.AjaxPostCode.generateRequest();
+  }
+
+  _handleAjaxPostErrorCode(e) {
+    console.log(e.detail.response);
+  }
+
+  _handleAjaxPostResponseCode(e) {
+    console.log(e.detail.response);
+  }
 }
 
 window.customElements.define(MyView2.is, MyView2);
