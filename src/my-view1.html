@@ -14,6 +14,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="shared-styles.html">
 
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
 <dom-module id="my-view1">
   <template>
     <style include="shared-styles">
@@ -37,10 +39,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         text-align: center;
       }
 
-      .card-consigne {
-        @apply --paper-font-headline;
-      }
-
       .tab {
         margin-left: 20px;
       }
@@ -50,26 +48,82 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding: 20px;
       }
 
-      .card-content {
-        margin-left: 50px;
-      }
-
       paper-fab + paper-fab {
         margin-left: 10px;
       }
 
+      pre .str, code .str { color: #65B042; } /* string  - green */
+      pre .kwd, code .kwd { color: #E28964; } /* keyword - dark pink */
+      pre .com, code .com { color: #AEAEAE; font-style: italic; } /* comment - gray */
+      pre .typ, code .typ { color: #89bdff; } /* type - light blue */
+      pre .lit, code .lit { color: #3387CC; } /* literal - blue */
+      pre .pun, code .pun { color: #fff; } /* punctuation - white */
+      pre .pln, code .pln { color: #fff; } /* plaintext - white */
+      pre .tag, code .tag { color: #89bdff; } /* html/xml tag    - light blue */
+      pre .atn, code .atn { color: #bdb76b; } /* html/xml attribute name  - khaki */
+      pre .atv, code .atv { color: #65B042; } /* html/xml attribute value - green */
+      pre .dec, code .dec { color: #3387CC; } /* decimal - blue */
+
+      pre.prettyprint, code.prettyprint {
+        background-color: #1d1d16;
+        border-radius: 8px;
+      }
+
+      pre.prettyprint {
+        width: 95%;
+        margin: 1em auto;
+        padding: 1em;
+        white-space: pre-wrap;
+      }
+
+
+      /* Specify class=linenums on a pre to get line numbering */
+      ol.linenums { margin-top: 0; margin-bottom: 0; color: #AEAEAE; } /* IE indents via margin-left */
+      li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8 { list-style-type: none }
+      /* Alternate shading for lines */
+      li.L1,li.L3,li.L5,li.L7,li.L9 { }
+
+      @media print {
+      pre .str, code .str { color: #060; }
+      pre .kwd, code .kwd { color: #006; font-weight: bold; }
+      pre .com, code .com { color: #600; font-style: italic; }
+      pre .typ, code .typ { color: #404; font-weight: bold; }
+      pre .lit, code .lit { color: #044; }
+      pre .pun, code .pun { color: #440; }
+      pre .pln, code .pln { color: #000; }
+      pre .tag, code .tag { color: #006; font-weight: bold; }
+      pre .atn, code .atn { color: #404; }
+      pre .atv, code .atv { color: #060; }
+      }
+
     </style>
 
-    <paper-card heading="Consigne">
+    <paper-card heading="Make some HTML code">
       <div class="card-content">
-        <div class="card-consigne">
-          <p>public class HelloWorld {</p>
-            <p class="tab">public static void main(String[] args) {</p>
-            <p class="tab">// Prints "Hello, World" to the terminal window.</p>
-            <p class="tab">System.out.println("Hello, World");</p>
-            <p class="tab">}</p>
-          <p>}</p>
-        </div>
+        <pre class="prettyprint lang-html linenums">
+          &lt;!doctype html&gt;
+          &lt;html&gt;
+            &lt;head&gt;
+              &lt;title&gt;HTML Test&lt;/title&gt;
+              &lt;script type="text/javascript"&gt;
+                // Say hello world until the user starts questioning 
+                function helloWorld(world) {
+                  for (var i = 42; --i &gt;= 0;) {
+                   alert('Hello ' + String(world));
+                  }
+                }
+              &lt;/script&gt;
+              &lt;style type="text/css"&gt;
+                 p { color: pink }
+                 b { color: blue }
+                 u { color: "umber" }
+               &lt;/style&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+              &lt;h1&gt;Hello world!&lt;/h1&gt;
+            &lt;/body&gt;
+          &lt;/html&gt;
+        </pre>
       </div>
       <div class="card-actions">
         <paper-fab icon="favorite"></paper-fab>
@@ -78,16 +132,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <paper-fab icon="favorite"></paper-fab>
       </div>
     </paper-card>
-    <div class="card">
-      <h1>Consigne</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-      <div style="height:1px;background-color:grey"></div>
-      <paper-fab icon="favorite"></paper-fab>
-      <paper-fab icon="clear"></paper-fab>
-      <paper-fab icon="check"></paper-fab>
-      <paper-fab icon="favorite"></paper-fab>
-    </div>
   </template>
 
   <script>
