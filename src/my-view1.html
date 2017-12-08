@@ -35,6 +35,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         --paper-card-header-color: #FFFFFF;
       }
 
+      h1 {
+        color: #f8f8f2;
+      }
+
       paper-fab {
         display: inline-block;
         text-align: center;
@@ -68,9 +72,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     </style>
 
-    <paper-card heading="Make some HTML code">
+    <paper-card>
     <iron-ajax auto url="" handle-as="json" on-response="handleResponse"></iron-ajax>
       <div class="card-content">
+        <h1>Titre consigne</h1>
+        <p>description</p>
         <pre class="prettyprint lang-html linenums">
           &lt;!doctype html&gt;
           &lt;html&gt;
@@ -97,9 +103,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </pre>
       </div>
       <div class="card-actions">
-        <paper-fab icon="favorite"></paper-fab>
         <paper-fab icon="clear"></paper-fab>
         <paper-fab icon="check"></paper-fab>
+          <paper-fab icon="remove"></paper-fab>
         <paper-fab icon="favorite"></paper-fab>
       </div>
     </paper-card>
