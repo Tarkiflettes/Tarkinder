@@ -78,7 +78,7 @@
         </paper-card>
       </iron-collapse>
     </div>
-    <paper-toast id="toast" text="Isncription réussie ! Veuillez vous connecter !"></paper-toast>
+    <paper-toast id="toast" text="Inscription réussie ! Veuillez vous connecter !"></paper-toast>
   </template>
 
   <script>
@@ -124,6 +124,7 @@
 
       _handleAjaxPostResponseLogin(e) {
         console.log(e.detail.response);
+        this.dispatchEvent(new CustomEvent('tokenUser', {detail: e.detail.response.id}));
       }
     }    
 

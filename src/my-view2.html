@@ -9,31 +9,150 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-input/paper-textarea.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-view2">
   <template>
     <style include="shared-styles">
-      :host {
-        display: block;
-
-        padding: 10px;
-      }
-    </style>
-
-    <div class="card">
-      <div class="circle">2</div>
-      <h1>View Two</h1>
-      <p>Ea duis bonorum nec, falli paulo aliquid ei eum.</p>
-      <p>Id nam odio natum malorum, tibique copiosae expetenda mel ea.Detracto suavitate repudiandae no eum. Id adhuc minim soluta nam.Id nam odio natum malorum, tibique copiosae expetenda mel ea.</p>
-    </div>
-  </template>
-
-  <script>
-    class MyView2 extends Polymer.Element {
-      static get is() { return 'my-view2'; }
+    :host {
+      display: block;
+      padding: 10px;
+      text-align: center;
     }
 
-    window.customElements.define(MyView2.is, MyView2);
-  </script>
+    .code-input {
+
+    }
+
+    paper-card {
+      margin:10px;
+      width:50%;
+      text-align: left;
+      background: #272822;
+      color: #f8f8f2;
+      --paper-card-header-color: #FFFFFF;
+    }
+    h1 {
+      color: #f8f8f2;
+    }
+
+    paper-fab {
+      display: inline-block;
+      text-align: center;
+      background: #F92672;
+    }
+
+    .tab {
+      margin-left: 20px;
+    }
+
+    .card-actions {
+      text-align: right;
+      padding: 20px;
+    }
+
+    paper-fab + paper-fab {
+      margin-left: 10px;
+    }
+    pre.prettyprint, code.prettyprint, .code-input {
+      background-color: #1d1d16;
+      border-radius: 8px;
+        width: 95%;
+        margin: 1em auto;
+        padding: 1em;
+        white-space: pre-wrap;
+      color: #f8f8f2;
+    }
+  }
+
+  paper-button.submit {
+    --paper-button-ink-color: #009900;
+    --paper-button-flat-keyboard-focus: {
+      background-color: #009900;
+      color: white !important;
+    };
+    --paper-button-raised-keyboard-focus: {
+      background-color: #009900 !important;
+      color: white !important;
+    };
+  }
+  paper-button.submit:hover {
+    background-color: #009900;
+  }
+  paper-button.submit {
+    background-color: #009900;
+    color: white;
+    --paper-button-raised-keyboard-focus: {
+      background-color: #009900 !important;
+      color: white !important;
+    };
+  }
+
+  paper-button.cons {
+    --paper-button-ink-color: #34362e;
+    --paper-button-flat-keyboard-focus: {
+      background-color: #34362e;
+      color: white !important;
+    };
+    --paper-button-raised-keyboard-focus: {
+      background-color: #34362e !important;
+      color: white !important;
+    };
+  }
+  paper-button.cons:hover {
+    background-color: #34362e;
+  }
+  paper-button.cons {
+    background-color: #34362e;
+    color: white;
+    --paper-button-raised-keyboard-focus: {
+      background-color: #34362e !important;
+      color: white !important;
+    };
+  }
+
+  textarea {
+    resize: none;
+    height: 300px;
+    maxlength="10000";
+  }
+
+  .card-actions {
+    border: 0;
+  }
+  </style>
+
+
+  <paper-card heading="Soumettre du code">
+    <iron-ajax auto url="" handle-as="json" on-response="handleResponse"></iron-ajax>
+    <div class="card-content">
+      <h1>Choix de la consigne</h1>
+      <paper-button raised class="cons">Cons1</paper-button>
+      <paper-button raised class="cons">Cons2</paper-button>
+      <paper-button raised class="cons">Cons3</paper-button>
+      <p>Description de la consigne</p>
+    </div>
+    <div class="card-content">
+      <h1>Code</h1>
+      <textarea class="code-input"></textarea>
+    </div>
+    <div class="card-actions">
+      <paper-button raised class="submit">Soumettre</paper-button>
+    </div>
+  </paper-card>
+</template>
+
+<script>
+class MyView2 extends Polymer.Element {
+  static get is() { return 'my-view2'; }
+}
+
+window.customElements.define(MyView2.is, MyView2);
+</script>
 </dom-module>

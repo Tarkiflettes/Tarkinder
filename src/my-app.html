@@ -114,7 +114,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             fallback-selection="view404"
             role="main">
 
-            <my-auth name="auth"></my-auth>
+            <my-auth id='auth' name="auth"></my-auth>
             <my-konami name="konami"></my-konami>
           <my-view1 name="view1"></my-view1>
           <my-view2 name="view2"></my-view2>
@@ -131,6 +131,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       static get is() { return 'my-app'; }
 
+      ready() {
+      	super.ready();
+      	this.$.auth.addEventListener('tokenUser', this.getTokenUser.bind(this))
+      }
+      
       static get properties() {
         return {
           page: {
@@ -144,6 +149,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           // Polymer.Element#rootPath
           rootPath: String,
         };
+      }
+
+      getTokenUser(elem) {
+      	console.log(elem.detail);
       }
 
       _launchEasterEgg() {

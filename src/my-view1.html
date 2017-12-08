@@ -13,40 +13,100 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="shared-styles.html">
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 
 <dom-module id="my-view1">
   <template>
     <style include="shared-styles">
-    :host {
-      display: block;
-      text-align: center;
-    }
-    paper-fab {
-      display: inline-block;
-      text-align: center;
-      background-color: #ff0000;
-    }
-    paper-card {
-      background-color: #282a36;
-      color: #f8f8f2;
-      width: 60%;
-      text-align: left;
-    }
+      :host {
+        display: block;
+        padding: 10px;
+        text-align: center;
+      }
 
-    .card-actions {
-      text-align: center;
-    }
+      paper-card {
+        margin:10px;
+        width:50%;
+        text-align: left;
+        background: #272822;
+        color: #f8f8f2;
+        --paper-card-header-color: #FFFFFF;
+      }
+
+      h1 {
+        color: #f8f8f2;
+      }
+
+      paper-fab {
+        display: inline-block;
+        text-align: center;
+        background: #F92672;
+      }
+
+      .tab {
+        margin-left: 20px;
+      }
+
+      .card-actions {
+        text-align: center;
+        padding: 20px;
+      }
+
+      paper-fab + paper-fab {
+        margin-left: 10px;
+      }
+      pre.prettyprint, code.prettyprint {
+        background-color: #1d1d16;
+        border-radius: 8px;
+      }
+
+      pre.prettyprint {
+        width: 95%;
+        margin: 1em auto;
+        padding: 1em;
+        white-space: pre-wrap;
+      }
+      }
+
     </style>
 
     <paper-card>
-      <iron-ajax auto url="" handle-as="json" on-response="handleResponse"></iron-ajax>
-      <div class="card-content">Some content</div>
-      <div class="card-content">code</div>
+    <iron-ajax auto url="" handle-as="json" on-response="handleResponse"></iron-ajax>
+      <div class="card-content">
+        <h1>Titre consigne</h1>
+        <p>description</p>
+        <pre class="prettyprint lang-html linenums">
+          &lt;!doctype html&gt;
+          &lt;html&gt;
+            &lt;head&gt;
+              &lt;title&gt;HTML Test&lt;/title&gt;
+              &lt;script type="text/javascript"&gt;
+                // Say hello world until the user starts questioning
+                function helloWorld(world) {
+                  for (var i = 42; --i &gt;= 0;) {
+                   alert('Hello ' + String(world));
+                  }
+                }
+              &lt;/script&gt;
+              &lt;style type="text/css"&gt;
+                 p { color: pink }
+                 b { color: blue }
+                 u { color: "umber" }
+               &lt;/style&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+              &lt;h1&gt;Hello world!&lt;/h1&gt;
+            &lt;/body&gt;
+          &lt;/html&gt;
+        </pre>
+      </div>
       <div class="card-actions">
-        <paper-fab icon="remove"></paper-fab>
         <paper-fab icon="clear"></paper-fab>
         <paper-fab icon="check"></paper-fab>
+          <paper-fab icon="remove"></paper-fab>
         <paper-fab icon="favorite"></paper-fab>
       </div>
     </paper-card>
