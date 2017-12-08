@@ -10,6 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="shared-styles.html">
@@ -100,6 +101,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <paper-card heading="Make some HTML code">
+    <iron-ajax auto url="" handle-as="json" on-response="handleResponse"></iron-ajax>
       <div class="card-content">
         <pre class="prettyprint lang-html linenums">
           &lt;!doctype html&gt;
@@ -136,10 +138,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </template>
 
   <script>
-    class MyView1 extends Polymer.Element {
-      static get is() { return 'my-view1'; }
-    }
+  class MyView1 extends Polymer.Element {
+    static get is() { return 'my-view1'; }
 
-    window.customElements.define(MyView1.is, MyView1);
+    handleResponse(e) {
+      console.log(e.detail.response);
+    }
+  }
+
+  window.customElements.define(MyView1.is, MyView1);
   </script>
 </dom-module>

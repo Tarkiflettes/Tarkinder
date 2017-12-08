@@ -1,0 +1,28 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-konami">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+
+    </style>
+
+    <div class="card">
+      KONAMI
+    </div>
+  </template>
+
+  <script>
+    class MyKonami extends Polymer.Element {
+      static get is() { return 'my-konami'; }
+
+    }    
+
+    window.customElements.define(MyKonami.is, MyKonami);
+  </script>
+</dom-module>
