@@ -22,7 +22,9 @@
     "iron-collapse": "^2.0.0",
     "paper-card": "PolymerElements/paper-card#^2.0.0",
     "paper-input": "PolymerElements/paper-input#^2.0.5",
-    "konami-code": "abdonrd/konami-code#^0.1.1"
+    "konami-code": "abdonrd/konami-code#^0.1.1",
+    "iron-ajax": "^2.0.6",
+    "paper-toast": "polymerelements/paper-toast#^2.0.0"
   },
   "resolutions": {
     "polymer": "^2.0.0"

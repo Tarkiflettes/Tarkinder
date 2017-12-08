@@ -3,7 +3,9 @@
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-toast/paper-toast.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../bower_components/iron-collapse/iron-collapse.html">
 <link rel="import" href="shared-styles.html">
 
@@ -20,7 +22,22 @@
         float: right;
       }
     </style>
-
+    <iron-ajax id="AjaxPostSignUp"
+        url="http://54.37.20.216:3000/api/Users"
+        method="POST"
+        content-type="application/json"
+        handle-as="json"
+        on-response="_handleAjaxPostResponseSignUp"
+        on-error="_handleAjaxPostErrorSignUp">
+    </iron-ajax>
+    <iron-ajax id="AjaxPostSignIn"
+        url="http://54.37.20.216:3000/api/Users/login"
+        method="POST"
+        content-type="application/json"
+        handle-as="json"
+        on-response="_handleAjaxPostResponseLogin"
+        on-error="_handleAjaxPostErrorLogin">
+    </iron-ajax>
     <div class="card">
       <iron-collapse id="signinButton" opened>
         <paper-button on-click="toggleSignIn" raised>SE CONNECTER</paper-button>
@@ -61,6 +78,7 @@
         </paper-card>
       </iron-collapse>
     </div>
+    <paper-toast id="toast" text="Isncription réussie ! Veuillez vous connecter !"></paper-toast>
   </template>
 
   <script>
@@ -77,6 +95,35 @@
         this.$.signup.toggle();
         this.$.signinButton.toggle();
         this.$.signupButton.toggle();
+      }
+
+      signup() {
+        this.$.AjaxPostSignUp.body = { "email": this.mail, "password": this.pass };
+        this.$.AjaxPostSignUp.generateRequest();
+      }
+
+      login() {
+        this.$.AjaxPostSignIn.body = { "email": this.mail, "password": this.pass };
+        this.$.AjaxPostSignIn.generateRequest();
+      }
+
+      _handleAjaxPostErrorSignUp(e) {
+        console.log(e.detail.response);
+      }
+
+      _handleAjaxPostResponseSignUp(e) {
+        console.log(e.detail.response);
+        this.$.toast.toggle();
+        this.$.signup.toggle();
+        this.$.signin.toggle();
+      }
+
+      _handleAjaxPostErrorLogin(e) {
+        console.log(e.detail.response);
+      }
+
+      _handleAjaxPostResponseLogin(e) {
+        console.log(e.detail.response);
       }
     }    
 
