@@ -1,4 +1,8 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/game-snakes/game-snakes.html">
+<link rel="import" href="../bower_components/game-snakes/controllers/game-snakes-keyboard.html">
+<link rel="import" href="../bower_components/game-snakes/controllers/game-snakes-gesture.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-konami">
@@ -6,23 +10,38 @@
     <style include="shared-styles">
       :host {
         display: block;
-
         padding: 10px;
       }
-
+      #cars {
+          background-color: #FFFFFF;
+          --game-snakes-food: {
+            background: transparent url('../bower_components/game-snakes/img/stick.png') no-repeat;
+            background-size: contain;
+          };
+          --game-snakes-head: {
+            background: transparent url('../bower_components/game-snakes/img/car.png') no-repeat;
+            background-size: contain;
+          };
+          --game-snakes-tail: {
+            background: transparent url('../bower_components/game-snakes/img/car.png') no-repeat;
+            background-size: contain;
+          };
+      }
     </style>
 
-    <div class="card">
-      KONAMI
-    </div>
+    <p>Appuyez sur la barre espace pour démarrer le jeu. Utilisez les flèches du clavier pour vous déplacer.</p>
+    <p>(Ne reproduisez pas cela dans la vraie vie. En fait, faites plutôt l'inverse. Sauvez des vies.)</p>
+    <p>Score: [[score]]</p>
+    <game-snakes id="cars" score="{{score}}" size="50" height="12" width="16">
+      <game-snakes-keyboard></game-snakes-keyboard>
+      <game-snakes-gesture></game-snakes-gesture>
+    </game-snakes>
   </template>
 
   <script>
     class MyKonami extends Polymer.Element {
       static get is() { return 'my-konami'; }
-
     }    
-
     window.customElements.define(MyKonami.is, MyKonami);
   </script>
 </dom-module>
