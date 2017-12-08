@@ -118,7 +118,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     };
   }
 
-  textarea {
+  textarea.titre {
+    resize: none;
+    maxlength="10000";
+  }
+
+  textarea.description {
     resize: none;
     height: 300px;
     maxlength="10000";
@@ -140,7 +145,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <paper-card heading="Créer une nouvelle consigne">
     <iron-ajax auto url="" handle-as="json" on-response="handleResponse"></iron-ajax>
     <div class="card-content">
-      <textarea id="textArea" value="{{taValue::input}}" class="code-input"></textarea>
+      <h1>Titre de la consigne</h1>
+      <textarea id="textAreaTitre" value="{{titreValue::input}}" class="titre"></textarea>
+      <h1>Description de la consigne</h1>
+      <textarea id="textAreaDesc" value="{{descriptionValue::input}}" class="description"></textarea>
     </div>
     <div class="card-actions">
       <paper-button raised class="submit" on-click="submit">Créer</paper-button>
@@ -157,7 +165,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         var obj = {};
         obj.Authorization = this.tokken;
         this.$.AjaxPostConsigne.headers = obj
-        this.$.AjaxPostConsigne.body = { "title": this.taValue, "description": "consigne pour code"}
+        this.$.AjaxPostConsigne.body = { "title": this.titreValue, "description": this.descriptionValue}
         this.$.AjaxPostConsigne.generateRequest();
       }
 

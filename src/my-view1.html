@@ -74,39 +74,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <paper-card>
-    <iron-ajax auto url="" handle-as="json" on-response="handleResponse"></iron-ajax>
+    <iron-ajax auto url="http://54.37.20.216:3000/api/codesheets" handle-as="json" on-response="handleResponse"></iron-ajax>
+    <iron-ajax id="AjaxConsignes" url="http://54.37.20.216:3000/api/consignes/{{consigneId}}" handle-as="json" on-response="handleResponseConsignes"></iron-ajax>
       <div class="card-content">
-        <h1>Titre consigne</h1>
-        <p>description</p>
+        <h1>[[consigneTitre]]</h1>
+        <p>[[consigneDescription]]</p>
         <pre class="prettyprint lang-html linenums">
-          &lt;!doctype html&gt;
-          &lt;html&gt;
-            &lt;head&gt;
-              &lt;title&gt;HTML Test&lt;/title&gt;
-              &lt;script type="text/javascript"&gt;
-                // Say hello world until the user starts questioning
-                function helloWorld(world) {
-                  for (var i = 42; --i &gt;= 0;) {
-                   alert('Hello ' + String(world));
-                  }
-                }
-              &lt;/script&gt;
-              &lt;style type="text/css"&gt;
-                 p { color: pink }
-                 b { color: blue }
-                 u { color: "umber" }
-               &lt;/style&gt;
-            &lt;/head&gt;
-            &lt;body&gt;
-              &lt;h1&gt;Hello world!&lt;/h1&gt;
-            &lt;/body&gt;
-          &lt;/html&gt;
+          [[code]]
         </pre>
       </div>
       <div class="card-actions">
         <paper-fab icon="clear"></paper-fab>
         <paper-fab icon="check"></paper-fab>
-          <paper-fab icon="remove"></paper-fab>
+        <paper-fab icon="remove"></paper-fab>
         <paper-fab icon="favorite"></paper-fab>
       </div>
     </paper-card>
@@ -120,13 +100,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return {
           listConsign: {
             type: Array,
-          }
+          },
+          code: {
+            type: String,
+          },
+          consigneId: {
+            type: String,
+          },
+
+          consigneTitre: {
+            type: String,
+          },
+
+          consigneDescription: {
+            type: String,
+          },
         }
       }
 
     handleResponse(e) {
       console.log(e.detail.response);
       this.listConsign = e.detail.response;
+      var size = this.listConsign.length;
+      var random = Math.floor(Math.random() * (size - 1) + 0);
+      this.code = this.listConsign[random].code;
+      this.consigneId = this.listConsign[random].consigneId;
+      this.$.AjaxConsignes.generateRequest();
+    }
+
+    handleResponseConsignes(e) {
+      console.log(e.detail.response);
+      this.consigneTitre = e.detail.response.title;
+      this.consigneDescription = e.detail.response.description;
     }
   }
 

@@ -138,13 +138,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         on-error="_handleAjaxPostErrorCode">
     </iron-ajax>
   <paper-card heading="Soumettre du code">
-    <iron-ajax auto url="" handle-as="json" on-response="handleResponse"></iron-ajax>
+    <iron-ajax auto url="http://54.37.20.216:3000/api/consignes" handle-as="json" last-response="{{consignes}}"></iron-ajax>
     <div class="card-content">
       <h1>Choix de la consigne</h1>
-      <paper-button raised class="cons">Cons1</paper-button>
-      <paper-button raised class="cons">Cons2</paper-button>
-      <paper-button raised class="cons">Cons3</paper-button>
-      <p>Description de la consigne</p>
+      <template is="dom-repeat" id="list" items="{{consignes}}">
+        <paper-button raised class="cons" on-click='{{selected(item.id)}}'>{{item.title}}</paper-button>
+      </template>
     </div>
     <div class="card-content">
       <h1>Code</h1>
@@ -161,13 +160,17 @@ class MyView2 extends Polymer.Element {
   static get is() { return 'my-view2'; }
 
   submit() {
-    //var text = textArea.value;
     console.log(this.tokken)
     var obj = {};
     obj.Authorization = this.tokken;
     this.$.AjaxPostCode.headers = obj
-    this.$.AjaxPostCode.body = { "code": this.taValue, "consigneId": "76", "langageId": "45" }
+    this.$.AjaxPostCode.body = { "code": this.taValue, "consigneId": this.consigneId, "langageId": "45" }
     this.$.AjaxPostCode.generateRequest();
+  }
+
+  selected(item) {
+    console.log(item)
+    this.consigneId = item;
   }
 
   _handleAjaxPostErrorCode(e) {
