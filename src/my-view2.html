@@ -10,31 +10,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-input/paper-textarea.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-view2">
   <template>
     <style include="shared-styles">
-      :host {
-        display: block;
-        padding: 10px;
-      }
+    :host {
+      display: block;
+      padding: 10px;
+    }
+    .code-input {
+    }
     </style>
 
     <div class="card">
-      <h1>Choix de la consigne</h1>
-      <ul>
-        <paper-button raised>raised</paper-button>
-      </ul>
-      <p>Id nam odio natum malorum, tibique copiosae expetenda mel ea.Detracto suavitate repudiandae no eum. Id adhuc minim soluta nam.Id nam odio natum malorum, tibique copiosae expetenda mel ea.</p>
+      <h1>Consigne</h1>
+      <paper-button raised>Cons1</paper-button>
+      <paper-button raised>Cons2</paper-button>
+      <paper-button raised>Cons3</paper-button>
+      <paper-textarea label="Nouvelle consigne"></paper-textarea>
+      <h1>Code</h1>
+      <paper-textarea class="code-input" rows=5></paper-textarea>
     </div>
+
   </template>
-
   <script>
-    class MyView2 extends Polymer.Element {
-      static get is() { return 'my-view2'; }
-    }
+  class MyView2 extends Polymer.Element {
+    static get is() { return 'my-view2'; }
+  }
 
-    window.customElements.define(MyView2.is, MyView2);
+  window.customElements.define(MyView2.is, MyView2);
   </script>
 </dom-module>
