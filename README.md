@@ -1,125 +1,31 @@
-# Polymer App Toolbox - Starter Kit
+# Tarkinder
 
-[![Build Status](https://travis-ci.org/PolymerElements/polymer-starter-kit.svg?branch=master)](https://travis-ci.org/PolymerElements/polymer-starter-kit)
+## Challenge
 
-This template is a starting point for building apps using a drawer-based
-layout. The layout is provided by `app-layout` elements.
-
-This template, along with the `polymer-cli` toolchain, also demonstrates use
-of the "PRPL pattern" This pattern allows fast first delivery and interaction with
-the content at the initial route requested by the user, along with fast subsequent
-navigation by pre-caching the remaining components required by the app and
-progressively loading them on-demand as the user navigates through the app.
-
-The PRPL pattern, in a nutshell:
-
-* **Push** components required for the initial route
-* **Render** initial route ASAP
-* **Pre-cache** components for remaining routes
-* **Lazy-load** and progressively upgrade next routes on-demand
-
-### Migrating from Polymer Starter Kit v1?
-
-[Check out our blog post that covers what's changed in PSK2 and how to migrate!](https://www.polymer-project.org/1.0/blog/2016-08-18-polymer-starter-kit-or-polymer-cli.html)
-
-### Quickstart
-
-We've recorded a Polycast to get you up and running with PSK2 fast!
-
-<p align="center">
-  <a href="https://www.youtube.com/watch?v=HgJ0XCyBwzY&list=PLNYkxOF6rcIDdS7HWIC_BYRunV6MHs5xo&index=10">
-    <img src="https://img.youtube.com/vi/HgJ0XCyBwzY/0.jpg" alt="Polymer Starter Kit 2 video">
-  </a>
-</p>
-
-### Setup
-
-##### Prerequisites
-
-First, install [Polymer CLI](https://github.com/Polymer/polymer-cli) using
-[npm](https://www.npmjs.com) (we assume you have pre-installed [node.js](https://nodejs.org)).
-
-    npm install -g polymer-cli
-
-Second, install [Bower](https://bower.io/) using [npm](https://www.npmjs.com)
-
-    npm install -g bower
-
-##### Initialize project from template
-
-    mkdir my-app
-    cd my-app
-    polymer init polymer-2-starter-kit
-
-### Start the development server
-
-This command serves the app at `http://127.0.0.1:8081` and provides basic URL
-routing for the app:
-
-    polymer serve
-
-### Build
-
-The `polymer build` command builds your Polymer application for production, using build configuration options provided by the command line or in your project's `polymer.json` file.  
-
-You can configure your `polymer.json` file to create multiple builds. This is necessary if you will be serving different builds optimized for different browsers. You can define your own named builds, or use presets. See the documentation on [building your project for production](https://www.polymer-project.org/2.0/toolbox/build-for-production) for more information.
-
-The Polymer Starter Kit is configured to create three builds using [the three supported presets](https://www.polymer-project.org/2.0/toolbox/build-for-production#build-presets):
-
+[Ton code est OK ou KO ?](https://www.nuitdelinfo.com/inscription/defis/136)
 ```
-"builds": [
-  {
-    "preset": "es5-bundled"
-  },
-  {
-    "preset": "es6-bundled"
-  },
-  {
-    "preset": "es6-unbundled"
-  }
-]
+Durant la nuit de l'informatique, de nombreux étudiants viennent pour profiter de l'ambiance, sans toutefois se lancer dans un défi. Mettons les à contribution en leur faisant relire votre code de manière ludique !
+
+Vous devez créer l'application web ou mobile définie par le sujet de la nuit de l'informatique. 
+Cependant, vous devrez concevoir cette application de manière à ce que vos camarades puisse valider le code produit durant la nuit de l'informatique via une interface spécifique. 
+Pendant la nuit, vous déposerez une consigne, ou des spécifications et un code associé. 
+Vos camarades pourront dire si le code correspond à la consigne ou si il contient une erreur. 
+Ils auront la possibilité de glisser le code vers la droite pour dire ‘OK, le code réponds à la consigne’, vers la gauche pour dire ‘KO, le code ne correspond pas à la consigne’, vers le haut pour signaler une consigne ou une spécification trop impécise, voire vers le bas pour signaler un code illisible du fait du non respect des normes de codage.
 ```
 
-Builds will be output to a subdirectory under the `build/` directory as follows:
+## Technologies
 
-```
-build/
-  es5-bundled/
-  es6-bundled/
-  es6-unbundled/
-```
+* Javascript
+* Polymer
 
-* `es5-bundled` is a bundled, minified build with a service worker. ES6 code is compiled to ES5 for compatibility with older browsers.
-* `es6-bundled` is a bundled, minified build with a service worker. ES6 code is served as-is. This build is for browsers that can handle ES6 code - see [building your project for production](https://www.polymer-project.org/2.0/toolbox/build-for-production#compiling) for a list.
-* `es6-unbundled` is an unbundled, minified build with a service worker. ES6 code is served as-is. This build is for browsers that support HTTP/2 push.
+## Authors
 
-Run `polymer help build` for the full list of available options and optimizations. Also, see the documentation on the [polymer.json specification](https://www.polymer-project.org/2.0/docs/tools/polymer-json) and [building your Polymer application for production](https://www.polymer-project.org/2.0/toolbox/build-for-production).
+* **Nicolas Girault** - [Rhohen](https://github.com/Rhohen)  
+* **Thomas Foucault** - [Empheon](https://github.com/Empheon)  
+* **Marie Bouin** - [Hinageshi](https://github.com/Hinageshi)  
 
-### Preview the build
+See also the list of [contributors](https://github.com/Tarkiflettes/TarkInventory/graphs/contributors) who participated in this project.
 
-This command serves your app. Replace `build-folder-name` with the folder name of the build you want to serve.
+## License
 
-    polymer serve build/build-folder-name/
-
-### Run tests
-
-This command will run [Web Component Tester](https://github.com/Polymer/web-component-tester)
-against the browsers currently installed on your machine:
-
-    polymer test
-
-If running Windows you will need to set the following environment variables:
-
-- LAUNCHPAD_BROWSERS
-- LAUNCHPAD_CHROME
-
-Read More here [daffl/launchpad](https://github.com/daffl/launchpad#environment-variables-impacting-local-browsers-detection)
-
-### Adding a new view
-
-You can extend the app by adding more views that will be demand-loaded
-e.g. based on the route, or to progressively render non-critical sections of the
-application. Each new demand-loaded fragment should be added to the list of
-`fragments` in the included `polymer.json` file. This will ensure those
-components and their dependencies are added to the list of pre-cached components
-and will be included in the build.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
